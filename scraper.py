@@ -2,7 +2,7 @@ import json
 import requests
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-from webdriver_manager.firefox import GeckoDriverManager
+#from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.keys import Keys
 #from os import path
 import os
@@ -34,7 +34,7 @@ class Scraper():
     def __init__(self):
         self.driver = webdriver.Firefox(
             firefox_binary=binary,
-            executable_path=GeckoDriverManager().install(),
+            executable_path=os.getenv('GECKODRIVER_PATH'),
             options=options
                                           )
     def start(self):
