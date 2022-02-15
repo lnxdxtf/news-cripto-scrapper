@@ -2,6 +2,7 @@ import json
 import requests
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.keys import Keys
 #from os import path
 import os
@@ -15,12 +16,12 @@ load_dotenv()
 
 options = webdriver.FirefoxOptions()
 
-#options.log.level = "trace"
+options.log.level = "trace"
 
-#options.add_argument("-remote-debugging-port=9224")
+options.add_argument("-remote-debugging-port=9224")
 options.add_argument("-headless")
-# options.add_argument("-disable-gpu")
-# options.add_argument("-no-sandbox")
+options.add_argument("-disable-gpu")
+options.add_argument("-no-sandbox")
 
 binary = FirefoxBinary(os.getenv('FIREFOX_BIN'))
 
@@ -33,7 +34,7 @@ class Scraper():
     def __init__(self):
         self.driver = webdriver.Firefox(
             firefox_binary=binary,
-            executable_path=os.getenv('GECKODRIVER_PATH'),
+            executable_path=GeckoDriverManager().install(),
             options=options
                                           )
     def start(self):
