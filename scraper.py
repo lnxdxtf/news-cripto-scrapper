@@ -23,7 +23,7 @@ firefoxOptions.add_argument("-headless")
 firefoxOptions.add_argument("-disable-gpu")
 firefoxOptions.add_argument("-no-sandbox")
 
-firefoxBinary = FirefoxBinary(os.getenv('FIREFOX_BIN'))
+firefoxBinaryENV = FirefoxBinary(os.getenv('FIREFOX_BIN'))
 
 #urlAPP ="http://127.0.0.1:8000"
 urlAPP = "https://cripto-service.herokuapp.com"
@@ -34,7 +34,7 @@ class Scraper():
     def __init__(self):
         self.driver = webdriver.Firefox(executable_path=os.getenv("GECKODRIVER_PATH"),
                                         options=firefoxOptions,
-                                        binary= firefoxBinary
+                                        firefox_binary=firefoxBinaryENV
                                           )
     def start(self):
         self.driver.get(urlSCRAPTarget)
