@@ -34,7 +34,7 @@ class Scraper():
     def __init__(self):
         self.driver = webdriver.Firefox(
             firefox_binary=binary,
-            executable_path=os.getenv('GECKODRIVER_PATH'),
+            executable_path=os.environ.get('GECKODRIVER_PATH'),
             options=options
                                           )
     def start(self):
