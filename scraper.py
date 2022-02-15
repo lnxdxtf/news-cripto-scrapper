@@ -14,16 +14,16 @@ load_dotenv()
 #options = webdriver.FirefoxOptions()
 #options.binary_location = main_folder
 
-options = webdriver.FirefoxOptions()
+firefoxOptions = webdriver.FirefoxOptions()
 
-options.log.level = "trace"
+firefoxOptions.log.level = "trace"
 
-options.add_argument("-remote-debugging-port=9224")
-options.add_argument("-headless")
-options.add_argument("-disable-gpu")
-options.add_argument("-no-sandbox")
+firefoxOptions.add_argument("-remote-debugging-port=9224")
+firefoxOptions.add_argument("-headless")
+firefoxOptions.add_argument("-disable-gpu")
+firefoxOptions.add_argument("-no-sandbox")
 
-binary = FirefoxBinary(os.getenv('FIREFOX_BIN'))
+firefoxBinary = FirefoxBinary(os.getenv('FIREFOX_BIN'))
 
 #urlAPP ="http://127.0.0.1:8000"
 urlAPP = "https://cripto-service.herokuapp.com"
@@ -32,10 +32,9 @@ urlSCRAPTarget = "https://coinmarketcal.com/en/"
 
 class Scraper():
     def __init__(self):
-        self.driver = webdriver.Firefox(
-            firefox_binary=binary,
-            executable_path=os.environ.get('GECKODRIVER_PATH'),
-            options=options
+        self.driver = webdriver.Firefox(executable_path=os.getenv("GECKODRIVER_PATH"),
+                                        options=firefoxOptions,
+                                        binary= firefoxBinary
                                           )
     def start(self):
         self.driver.get(urlSCRAPTarget)
