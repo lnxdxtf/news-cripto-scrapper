@@ -32,7 +32,7 @@ urlSCRAPTarget = "https://coinmarketcal.com/en/"
 
 class Scraper():
     def __init__(self):
-        self.driver = webdriver.Firefox(executable_path=os.getenv("GECKODRIVER_PATH"),
+        self.driver = webdriver.Firefox(executable_path=os.getenv('GECKODRIVER_PATH'),
                                         options=firefoxOptions,
                                         firefox_binary=firefoxBinaryENV
                                           )
