@@ -29,7 +29,7 @@ firefoxBinaryENV = FirefoxBinary(os.getenv('FIREFOX_BIN'))
 urlAPP = "https://cripto-service.herokuapp.com"
 urlSCRAPTarget = "https://coinmarketcal.com/en/"
 
-
+#
 class Scraper():
     def __init__(self):
         self.driver = webdriver.Firefox(executable_path=os.getenv('GECKODRIVER_PATH'),
