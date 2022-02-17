@@ -126,7 +126,9 @@ def main():
             newBody = json.dumps(new, indent=4)
             requests.post(urlPOST, newBody)
             print(f"NOTÍCIA ADICIONADA: {new['title']} -- {new['symbol']}")
+            time.sleep(1)
         print(f"Número de notícias adicionadas: {len(objectNews)}")
+        print(f"Criptomoedas dos usuários: \n{criptos}")
         time.sleep(3600)
 if __name__ == "__main__":
     main()
