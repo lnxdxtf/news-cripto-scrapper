@@ -1,9 +1,10 @@
 import json
+from grpc import server
 import requests
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.service import Service
-#from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.keys import Keys
 #from os import path
 import os
@@ -30,7 +31,8 @@ urlAPP = "https://cripto-service.herokuapp.com"
 urlSCRAPTarget = "https://coinmarketcal.com/en/"
 
 geckoDriverPath = os.getenv('GECKODRIVER_PATH')
-serV = Service(geckoDriverPath)
+#serV = Service(geckoDriverPath)
+serV = Service(GeckoDriverManager().install())
 
 class Scraper():
     def __init__(self):
