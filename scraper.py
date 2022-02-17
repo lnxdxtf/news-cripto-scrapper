@@ -33,7 +33,7 @@ serV = Service(geckoDriverPath)
 
 class Scraper():
     def __init__(self):
-        self.driver = webdriver.Firefox(executable_path=geckoDriverPath,
+        self.driver = webdriver.Firefox(service=serV,
                                         options=firefoxOptions,
                                         firefox_binary=firefoxBinaryENV,
                   
