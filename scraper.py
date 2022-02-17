@@ -10,26 +10,23 @@ import time
 from dotenv import load_dotenv
 
 load_dotenv()
+
 #main_folder = path.join(path.expanduser("~"), r"AppData\Local\Mozilla Firefox\firefox.exe")
 #options = webdriver.FirefoxOptions()
 #options.binary_location = main_folder
 
 firefoxOptions = webdriver.FirefoxOptions()
-
 firefoxOptions.log.level = "trace"
-
 firefoxOptions.add_argument("-remote-debugging-port=9224")
 firefoxOptions.add_argument("-headless")
 firefoxOptions.add_argument("-disable-gpu")
 firefoxOptions.add_argument("-no-sandbox")
-
 firefoxBinaryENV = FirefoxBinary(os.getenv('FIREFOX_BIN'))
 
 #urlAPP ="http://127.0.0.1:8000"
 urlAPP = "https://cripto-service.herokuapp.com"
 urlSCRAPTarget = "https://coinmarketcal.com/en/"
 
-##
 class Scraper():
     def __init__(self):
         self.driver = webdriver.Firefox(executable_path=os.getenv('GECKODRIVER_PATH'),
