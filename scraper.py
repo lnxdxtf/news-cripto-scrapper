@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 import os
 import time
 from dotenv import load_dotenv
+from selenium.webdriver.common.by import By
 
 load_dotenv()
 
@@ -46,7 +47,7 @@ class Scraper():
         coin= coin.upper()
         try:
             time.sleep(3)
-            inputSearch = self.driver.find_element_by_id('form_keyword')
+            inputSearch = self.driver.find_element(By.ID, 'form_keyword')
             inputSearch.clear()
             inputSearch.send_keys(coin)
             inputSearch.send_keys(Keys.RETURN)
@@ -57,19 +58,19 @@ class Scraper():
             self.driver.quit()
     
     def getingNews(self, coin):
-        articleCards = self.driver.find_elements_by_xpath("//*[@class='card__body']")
+        articleCards = self.driver.find_elements(By.XPATH, "//*[@class='card__body']")
         
         #print(articleCards)
         for card in articleCards:
-            coinSymbolName = card.find_element_by_xpath(".//*[@class='card__coins']").find_element_by_xpath(".//*[@class='link-detail']").text
+            coinSymbolName = card.find_element(By.XPATH,".//*[@class='card__coins']").find_element(By.XPATH,".//*[@class='link-detail']").text
             #print(coinSymbolName)
-            eventDate = card.find_element_by_xpath(".//*[@class='card__date mt-0']").text
+            eventDate = card.find_element(By.XPATH,".//*[@class='card__date mt-0']").text
             #print(eventDate)
-            titleEvent = card.find_element_by_xpath(".//*[@class='card__title mb-0 ellipsis']").text
+            titleEvent = card.find_element(By.XPATH,".//*[@class='card__title mb-0 ellipsis']").text
             #print(titleEvent)
-            content = card.find_element_by_xpath(".//*[@class='card__description']").text
+            content = card.find_element(By.XPATH,".//*[@class='card__description']").text
             #print(content)
-            confident = card.find_element_by_xpath(".//*[@class='progress__votes']").text
+            confident = card.find_element(By.XPATH,".//*[@class='progress__votes']").text
             #print(confident)
             sealList = []
             
