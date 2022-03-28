@@ -129,6 +129,6 @@ def main():
             time.sleep(1)
         print(f"Número de notícias adicionadas: {len(objectNews)}")
         print(f"Criptomoedas dos usuários: \n{criptos}")
-        time.sleep(3600)
+        time.sleep(86400) #Uma vez por dia 86400s = 24h
 if __name__ == "__main__":
     main()
